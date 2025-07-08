@@ -33,10 +33,13 @@ function createNewAccount() {
 
   // Send Request
   const ajax = new XMLHttpRequest();
-  ajax.open("POST", "http://localhost:8080/Web_II_Project_5/CreateNewAccount", true);
+  ajax.open(
+    "POST",
+    "http://localhost:8080/Web_II_Project_5/CreateNewAccount",
+    true
+  );
 
   ajax.onreadystatechange = function () {
-
     if (ajax.readyState === 4) {
       if (ajax.status === 200) {
         alert("Account created successfully!");
@@ -44,8 +47,86 @@ function createNewAccount() {
         alert("Please try again later!");
       }
     }
-
   };
 
   ajax.send(userJSON);
+}
+
+function userLogin() {
+  const mobile = document.getElementById("mobile").value;
+  const password = document.getElementById("password").value;
+
+  const loginData = {
+    mobile: mobile,
+    password: password,
+  };
+
+  const loginJSON = JSON.stringify(loginData);
+  // console.log(loginJSON);
+
+  const ajax = new XMLHttpRequest();
+
+  ajax.onreadystatechange = function () {
+    if (ajax.readyState == 4) {
+      if (ajax.status == 200) {
+        alert(ajax.responseText);
+      } else {
+        alert("User login failed.");
+      }
+    }
+  };
+
+  ajax.open("POST", "http://localhost:8080/Web_II_Project_5/login", true);
+
+  ajax.withCredentials = true;
+  ajax.send(loginJSON);
+}
+
+function loadUsers() {
+  const tbody = document.getElementById("user_data_body");
+
+  var count = 1;
+
+  const ajax = new XMLHttpRequest();
+
+  ajax.onreadystatechange = function () {
+    if (ajax.readyState == 4) {
+      if (ajax.status == 200) {
+        // alert(ajax.responseText);
+
+        const users = JSON.parse(ajax.responseText);
+
+        // users.forEach((u) => {
+        //   tbody += `
+        //   <tr>
+        //     <td>${count}</td>
+        //     <td>${u.firstName}</td>
+        //     <td>${u.lastName}</td>
+        //     <td>${u.mobile}</td>
+        //     <td>${u.country}</td>
+        //     </tr>
+        //     `;
+        //   count++;
+        // });
+
+        users.forEach((u, index) => {
+          tbody.innerHTML += `
+          <tr>
+            <td>${index + 1}</td>
+            <td>${u.firstName}</td>
+            <td>${u.lastName}</td>
+            <td>${u.mobile}</td>
+            <td>${u.country}</td>
+            </tr>
+            `;
+          count++;
+        });
+      } else {
+        alert("user data loading failed.");
+      }
+    }
+  };
+
+  ajax.open("GET", "http://localhost:8080/Web_II_Project_5/all_users", true); // some use link with (api/v1/all_users)
+  ajax.send();
 }
