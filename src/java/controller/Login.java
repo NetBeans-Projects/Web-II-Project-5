@@ -31,7 +31,7 @@ public class Login extends HttpServlet {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/web_5?useSSL=false",
                     "root",
-                    "Judemysql@2004");
+                    "Password");
             Statement smt = connection.createStatement();
 
             ResultSet rs = smt.executeQuery("SELECT * FROM `user` WHERE `mobile`='" + u.getMobile() + "' && "
