@@ -35,9 +35,6 @@ function createNewAccount() {
   const ajax = new XMLHttpRequest();
   ajax.open("POST", "http://localhost:8080/Web_II_Project_5/CreateNewAccount", true);
 
-  // ✅ Set JSON header
-  ajax.setRequestHeader("Content-Type", "application/json");
-
   ajax.onreadystatechange = function () {
 
     if (ajax.readyState === 4) {
