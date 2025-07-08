@@ -34,7 +34,7 @@ public class CreateNewAccount extends HttpServlet {
         try {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/web_5?useSSL=false", "root", "Judemysql@2004");
+            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/web_5?useSSL=false", "root", "Password");
             Statement s = c.createStatement();
 
 //            Using "User" Java Bean Query
