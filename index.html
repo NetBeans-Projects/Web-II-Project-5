@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+
+    <div class="form-container">
+
+        <form class="form">
+
+            <center>
+                <h1>Create Account</h1>
+            </center>
+
+            <label for="mobile">Mobile</label>
+            <input type="text" id="mobile" placeholder="e.g. 0771234567" />
+
+            <br />
+
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" placeholder="John" />
+
+            <br />
+
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" placeholder="Carter" />
+
+            <br />
+
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password" />
+
+            <br />
+
+            <label for="country">Country</label>
+            <select id="country">
+                <option>Select Country</option>
+                <option>Sri Lanka</option>
+                <option>Canada</option>
+                <option>Australia</option>
+                <option>India</option>
+                <option>USA</option>
+            </select>
+
+            <br />
+
+            <button onclick="createNewAccount();">Create New Account</button>
+
+        </form>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
